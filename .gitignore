@@ -8,6 +8,7 @@
 MemoryCaptures/
 
 # Visual Studio / Rider
+.vsconfig
 .vscode/
 .vs/
 *.csproj
@@ -22,6 +23,9 @@ MemoryCaptures/
 *.svd
 .idea/
 *.sln.DotSettings
+
+# Assets Brackeys
+Brackeys/
 
 # Arquivos do sistema
 .DS_Store
