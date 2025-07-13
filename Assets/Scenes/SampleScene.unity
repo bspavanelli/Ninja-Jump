@@ -163,7 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c386e809ea58f4f4397b06a353e5094a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1022172053}
   startClimbingSpeed: 2
+  speedChangeInterval: 5
+  speedMultiplier: 0.25
 --- !u!1 &500345923
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,8 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3410f93b375fe064db0841af9543b0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minEnemySpawnTime: 2
-  maxEnemySpawnTime: 5
+  minEnemySpawnTime: 1
+  maxEnemySpawnTime: 3
   enemySOList:
   - {fileID: 11400000, guid: 55480648321c2984b8fb65a726c44fce, type: 2}
 --- !u!1 &663731451
@@ -675,6 +678,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a6e20a1fb6e55f44b9c85541e617203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1022172053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1139023387333378187, guid: e302ef728f3b7414b9cca1ea27261ec8, type: 3}
+  m_PrefabInstance: {fileID: 5089646121219630745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3167204b4e0ac4a8abe19c84f41471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1212042797

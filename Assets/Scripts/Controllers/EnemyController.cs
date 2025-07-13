@@ -5,25 +5,37 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
     [SerializeField] private float spawnPositionY;
     [SerializeField] private EnemySO enemySO;
-    [SerializeField] private PlayerController playerController;
+    
+    private PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        playerController.onPlayerAttack += PlayerController_onPlayerAttack;
+        playerController = GameManager.Instance.GetPlayerController();
+
+        playerController.OnPlayerAttack += PlayerController_OnPlayerAttack;
 
         SetEnemyStartPosition();
     }
 
-    // Update is called once per frame
-    void Update() {
-        HandleEnemyMovement();
-        HandleEnemyAttack();
 
-        DestroyIfOutOfScreen();
+    private void OnDestroy() {
+        playerController.OnPlayerAttack -= PlayerController_OnPlayerAttack;
     }
 
-    private void PlayerController_onPlayerAttack(object sender, System.EventArgs e) {
-        Destroy(gameObject);
+    // Update is called once per frame
+    void Update() {
+        if (GameManager.Instance.GetGameState() == GameManager.State.GamePlaying) {
+            HandleEnemyMovement();
+            HandleEnemyAttack();
+
+            DestroyIfOutOfScreen();
+        }
+    }
+
+    private void PlayerController_OnPlayerAttack(object sender, PlayerController.OnPlayerAttackEventArgs e) {
+        if (e.gameObject == gameObject) {
+            Destroy(gameObject);
+        }
     }
 
     private void SetEnemyStartPosition() {

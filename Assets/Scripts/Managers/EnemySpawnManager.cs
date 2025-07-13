@@ -10,14 +10,14 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private List<EnemySO> enemySOList;
 
     private void Start() {
-        GameManager.Instance.onGameStateChange += GameManager_onGameStateChange;
+        GameManager.Instance.OnGameStateChange += GameManager_OnGameStateChange;
     }
 
     private void OnDestroy() {
-        GameManager.Instance.onGameStateChange -= GameManager_onGameStateChange;
+        GameManager.Instance.OnGameStateChange -= GameManager_OnGameStateChange;
     }
 
-    private void GameManager_onGameStateChange(object sender, System.EventArgs e) {
+    private void GameManager_OnGameStateChange(object sender, System.EventArgs e) {
         if (GameManager.Instance.GetGameState() == GameManager.State.GamePlaying) {
             StartCoroutine(HandleEnemySpawn());
         }
@@ -32,7 +32,6 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     private void SpawnEnemy() {
-        Debug.Log("Spawnando enemy!");
         EnemySO enemySO = enemySOList[Random.Range(0, enemySOList.Count)];
         
         Instantiate(enemySO.prefab);

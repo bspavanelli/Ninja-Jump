@@ -12,14 +12,15 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
 
-    public event EventHandler onClimbSpeedChange;
-    public event EventHandler onGameStateChange;
+    public event EventHandler OnClimbSpeedChange;
+    public event EventHandler OnGameStateChange;
 
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private float startClimbingSpeed;
 
     [Header("Climbind Speed Increase Params")]
     [SerializeField] private float speedChangeInterval;
-    [SerializeField] private float speedMultiplier;
+    [SerializeField] private float speedToAdd;
 
     private float currentClimbSpeed;
     private State gameState;
@@ -38,37 +39,49 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator HandleClimbSpeedIncreaseOverTime() {
+        yield return new WaitForSeconds(speedChangeInterval);
+        
         while (gameState == State.GamePlaying) {
-            Debug.Log("Aumentando a velocidade em " + speedMultiplier + "% da velocidade inicial");
-            IncreaseClimbSpeed(speedMultiplier);
+            IncreaseClimbSpeed(speedToAdd);
 
             yield return new WaitForSeconds(speedChangeInterval);
         }
     }
 
     private void StartGame() {
-        currentClimbSpeed = startClimbingSpeed;
-        gameState = State.GamePlaying;
-        onGameStateChange?.Invoke(this, EventArgs.Empty);
+        SetClimbSpeed(startClimbingSpeed);
+
+        SetGameState(State.GamePlaying);
     }
 
     public void GameOver() {
-        currentClimbSpeed = 0;
-        gameState = State.GameOver;
-        onGameStateChange?.Invoke(this, EventArgs.Empty);
+        SetGameState(State.GameOver);
     }
 
     public float GetClimbSpeed() {
         return currentClimbSpeed;
     }
 
-    private void IncreaseClimbSpeed(float multiplier) {
-        currentClimbSpeed += (startClimbingSpeed * multiplier);
-        onClimbSpeedChange?.Invoke(this, EventArgs.Empty);
-        Debug.Log("Aumentado velocidade para " + currentClimbSpeed);
+    private void SetClimbSpeed(float climbSpeed) {
+        currentClimbSpeed = climbSpeed;
+        OnClimbSpeedChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void IncreaseClimbSpeed(float speedToAdd) {
+        currentClimbSpeed += speedToAdd;
+        OnClimbSpeedChange?.Invoke(this, EventArgs.Empty);
     }
 
     public State GetGameState() {
-        return gameState;
+        return gameState;         
+    }
+
+    public void SetGameState(State state) {
+        gameState = state;
+        OnGameStateChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    public PlayerController GetPlayerController() {
+        return playerController;
     }
 }

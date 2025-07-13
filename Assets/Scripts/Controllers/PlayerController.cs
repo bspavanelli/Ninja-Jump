@@ -5,17 +5,18 @@ public class PlayerController : MonoBehaviour {
     private const int WALL_LAYER = 6;
     private const int ENEMY_LAYER = 7;
 
-    public event EventHandler onPlayerDeath;
-    public event EventHandler onPlayerAttack;
+    public event EventHandler<OnPlayerAttackEventArgs> OnPlayerAttack;
+    public class OnPlayerAttackEventArgs : EventArgs {
+        public GameObject gameObject;
+    }
 
     [SerializeField] private float jumpForce = 10f;
 
     private Rigidbody2D rb;
 
     // Posição do player quando está na parede, X varia entre esse valor positivo ou negativo
-    private float defaultPositionXLeftWall = -1.73f;
-    private float defaultPositionXRightWall = 1.73f;
-    private float defaultPositionY = -1.64f;
+    private readonly float defaultPositionX = 1.73f;
+    private readonly float defaultPositionY = -1.64f;
 
     private bool isOnLeftWall;
     private bool isJumping;
@@ -34,7 +35,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void InputManager_OnJumpAction(object sender, System.EventArgs e) {
-        JumpToOtherWall();
+        if (GameManager.Instance.GetGameState() == GameManager.State.GamePlaying) {
+            JumpToOtherWall();
+        }
     }
 
     void JumpToOtherWall() {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.layer == WALL_LAYER && isJumping) {
             isJumping = false;
 
-            float positionX = isOnLeftWall ? defaultPositionXLeftWall : defaultPositionXRightWall;
+            float positionX = isOnLeftWall ? -defaultPositionX : defaultPositionX;
             Vector2 onWallPosition = new Vector2(positionX, defaultPositionY);
             transform.position = onWallPosition;
         }
@@ -66,10 +69,11 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.layer == ENEMY_LAYER) {
             // Se está pulando, mata o inimigo, se está correndo na parede, toma dano.
             if (isJumping) {
-                Debug.Log("Atacou inimigo!");
-                onPlayerAttack?.Invoke(this, EventArgs.Empty);
+                OnPlayerAttack?.Invoke(this, new OnPlayerAttackEventArgs {
+                    gameObject = collision.gameObject
+                });
             } else {
-                Debug.Log("Morreu!");
+                // TODO: Fazer lógica para verificar se está com escudo, caso contrário, game over.
                 GameManager.Instance.GameOver();
             }
         }
