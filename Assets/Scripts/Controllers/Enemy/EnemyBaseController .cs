@@ -2,9 +2,9 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public abstract class EnemyBaseController : MonoBehaviour {
     [SerializeField] private float spawnPositionY;
-    [SerializeField] private EnemySO enemySO;
+    [SerializeField] protected EnemySO enemySO;
     
     private PlayerController playerController;
 
@@ -45,31 +45,9 @@ public class EnemyController : MonoBehaviour {
         transform.position = new Vector3(spawnPositionX, spawnPositionY, 0);
     }
 
-    private void HandleEnemyMovement() {
-        switch (enemySO.type) {
-            case EnemySO.EnemyType.DOWN:
-                MoveEnemyDown();
-                break;
-            case EnemySO.EnemyType.SIDEWAYS:
-                break;
-            case EnemySO.EnemyType.STATIC_SHOOT:
-                break;
-            case EnemySO.EnemyType.FLY:
-                break;
-        }
-    }
+    protected abstract void HandleEnemyMovement();
 
-    private void HandleEnemyAttack() {
-        switch (enemySO.type) {
-            case EnemySO.EnemyType.STATIC_SHOOT:
-                break;
-        }
-    }
-
-    private void MoveEnemyDown() {
-        float enemySpeed = GameManager.Instance.GetClimbSpeed() + enemySO.speed;
-        transform.position += new Vector3(0, -1 * enemySpeed * Time.deltaTime, 0);
-    }
+    protected abstract void HandleEnemyAttack();
 
     private void DestroyIfOutOfScreen() {
         if (transform.position.y < -5.5f) {
