@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2155066841834879258}
   - component: {fileID: 4354299970955047050}
-  - component: {fileID: 698554094554069213}
   m_Layer: 7
   m_Name: Enemy_Base
   m_TagString: Untagged
@@ -80,21 +79,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &698554094554069213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574558441164318807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58454e7426eb03b4e8fffc1df1375d0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPositionY: 6
-  enemySO: {fileID: 11400000, guid: 55480648321c2984b8fb65a726c44fce, type: 2}
-  playerController: {fileID: 1139023387333378187, guid: e302ef728f3b7414b9cca1ea27261ec8, type: 3}
 --- !u!1 &4133467935952518056
 GameObject:
   m_ObjectHideFlags: 0

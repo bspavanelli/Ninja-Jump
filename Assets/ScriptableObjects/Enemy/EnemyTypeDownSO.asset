@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fa4b7020e252c34f811f242b294f6bc, type: 3}
-  m_Name: EnemySO
+  m_Name: EnemyTypeDownSO
   m_EditorClassIdentifier: 
   objectName: Enemy_Base
-  prefab: {fileID: 1574558441164318807, guid: ae48b77489ada6745aeeaecff5d1b777, type: 3}
+  prefab: {fileID: 6258783852882129958, guid: b091d002ca6047545be9fa04490995b3, type: 3}
   positionX: 1.74
   type: 0
   speed: 1

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class EnemyBaseController : MonoBehaviour {
@@ -7,6 +5,7 @@ public abstract class EnemyBaseController : MonoBehaviour {
     [SerializeField] protected EnemySO enemySO;
     
     private PlayerController playerController;
+    protected bool isMoveDirectionLeft;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -42,6 +41,7 @@ public abstract class EnemyBaseController : MonoBehaviour {
         bool isSideSpawnLeft = Random.Range(0, 2) == 0;
         float spawnPositionX = isSideSpawnLeft ? enemySO.positionX * -1 : enemySO.positionX;
 
+        isMoveDirectionLeft = !isSideSpawnLeft;
         transform.position = new Vector3(spawnPositionX, spawnPositionY, 0);
     }
 

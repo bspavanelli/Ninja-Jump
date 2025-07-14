@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
@@ -32,8 +31,14 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     private void SpawnEnemy() {
-        EnemySO enemySO = enemySOList[Random.Range(0, enemySOList.Count)];
+        int listPosition = Random.Range(0, enemySOList.Count);
         
+        EnemySO enemySO = enemySOList[listPosition];
+        
+        if (enemySO.platformPrefab != null) {
+            Instantiate(enemySO.platformPrefab);
+        }
+
         Instantiate(enemySO.prefab);
     }
 }

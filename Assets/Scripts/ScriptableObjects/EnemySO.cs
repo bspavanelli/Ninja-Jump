@@ -12,6 +12,7 @@ public class EnemySO : ScriptableObject
 
     public string objectName;
     public GameObject prefab;
+    public GameObject platformPrefab;
     public float positionX;
     public EnemyType type;
     public float speed;

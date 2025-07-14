@@ -166,7 +166,7 @@ MonoBehaviour:
   playerController: {fileID: 1022172053}
   startClimbingSpeed: 2
   speedChangeInterval: 5
-  speedMultiplier: 0.25
+  speedToAdd: 0.1
 --- !u!1 &500345923
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +636,7 @@ MonoBehaviour:
   maxEnemySpawnTime: 3
   enemySOList:
   - {fileID: 11400000, guid: 55480648321c2984b8fb65a726c44fce, type: 2}
+  - {fileID: 11400000, guid: f399da240aed3f64b99d439b4c3560d7, type: 2}
 --- !u!1 &663731451
 GameObject:
   m_ObjectHideFlags: 0
