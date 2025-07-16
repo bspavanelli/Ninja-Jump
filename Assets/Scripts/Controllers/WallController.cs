@@ -20,7 +20,7 @@ public class WallController : MonoBehaviour {
             if (transform.position.y <= distanceToReset) {
                 transform.position = Vector3.zero;
             }
-            transform.position += new Vector3(0, -1 * wallSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, -wallSpeed * Time.deltaTime, 0);
         }
     }
 

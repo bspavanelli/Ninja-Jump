@@ -17,4 +17,5 @@ MonoBehaviour:
   platformPrefab: {fileID: 7212381872231028165, guid: 21ea12c36229c824584bf39fd38053d2, type: 3}
   positionX: 1.74
   type: 1
-  speed: 5
+  minSpeed: 1.5
+  maxSpeed: 4

@@ -15,5 +15,6 @@ public class EnemySO : ScriptableObject
     public GameObject platformPrefab;
     public float positionX;
     public EnemyType type;
-    public float speed;
+    public float minSpeed;
+    public float maxSpeed;
 }

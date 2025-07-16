@@ -95,3 +95,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPositionY: 6
   enemySO: {fileID: 11400000, guid: f399da240aed3f64b99d439b4c3560d7, type: 2}
+  minSpeedX: 1
+  maxSpeedX: 4

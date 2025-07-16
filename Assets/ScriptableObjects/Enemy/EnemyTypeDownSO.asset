@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Enemy_Base
   prefab: {fileID: 6258783852882129958, guid: b091d002ca6047545be9fa04490995b3, type: 3}
+  platformPrefab: {fileID: 0}
   positionX: 1.74
   type: 0
-  speed: 1
+  minSpeed: 1
+  maxSpeed: 2

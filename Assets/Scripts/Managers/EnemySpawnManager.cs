@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnManager : MonoBehaviour
-{
+public class EnemySpawnManager : MonoBehaviour {
     [SerializeField] private float minEnemySpawnTime;
     [SerializeField] private float maxEnemySpawnTime;
     [SerializeField] private List<EnemySO> enemySOList;
@@ -32,9 +31,9 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void SpawnEnemy() {
         int listPosition = Random.Range(0, enemySOList.Count);
-        
+
         EnemySO enemySO = enemySOList[listPosition];
-        
+
         if (enemySO.platformPrefab != null) {
             Instantiate(enemySO.platformPrefab);
         }
