@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private const int WALL_LAYER = 6;
     private const int ENEMY_LAYER = 7;
+    private const int PROJECTILE_LAYER = 8;
 
     public event EventHandler<OnPlayerAttackEventArgs> OnPlayerAttack;
     public class OnPlayerAttackEventArgs : EventArgs {
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.layer == ENEMY_LAYER) {
+        if (collision.gameObject.layer == ENEMY_LAYER || collision.gameObject.layer == PROJECTILE_LAYER) {
             // Se está pulando, mata o inimigo, se está correndo na parede, toma dano.
             if (isJumping) {
                 OnPlayerAttack?.Invoke(this, new OnPlayerAttackEventArgs {

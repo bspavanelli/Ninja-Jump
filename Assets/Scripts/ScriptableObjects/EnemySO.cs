@@ -12,9 +12,18 @@ public class EnemySO : ScriptableObject
 
     public string objectName;
     public GameObject prefab;
-    public GameObject platformPrefab;
+
     public float positionX;
     public EnemyType type;
+
+    [Header("For enemy with movement Horizontal or Vertical")]
     public float minSpeed;
     public float maxSpeed;
+    
+    [Header("For SIDEWAYS type of enemy")]
+    public GameObject platformPrefab;
+
+    [Header("For STATIC_SHOOT type of enemy")]
+    public float minShootPositionY;
+    public float maxShootPositionY;
 }

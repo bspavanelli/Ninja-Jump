@@ -39,7 +39,7 @@ public abstract class EnemyBaseController : MonoBehaviour {
 
     private void SetEnemyStartPosition() {
         bool isSideSpawnLeft = Random.Range(0, 2) == 0;
-        float spawnPositionX = isSideSpawnLeft ? enemySO.positionX * -1 : enemySO.positionX;
+        float spawnPositionX = isSideSpawnLeft ? -enemySO.positionX : enemySO.positionX;
 
         isMoveDirectionLeft = !isSideSpawnLeft;
         transform.position = new Vector3(spawnPositionX, spawnPositionY, 0);

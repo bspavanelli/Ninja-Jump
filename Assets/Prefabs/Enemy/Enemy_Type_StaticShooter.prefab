@@ -95,3 +95,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPositionY: 6
   enemySO: {fileID: 11400000, guid: 272135878cab1c1488aa0065e1689815, type: 2}
+  projectileSO: {fileID: 11400000, guid: 42bc6c1e9fe269d48987ba67bdb82fd2, type: 2}

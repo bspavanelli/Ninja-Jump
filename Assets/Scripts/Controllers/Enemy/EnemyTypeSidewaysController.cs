@@ -33,8 +33,6 @@ public class EnemyTypeSidewaysController : EnemyBaseController {
             }
         }
 
-        Debug.Log("currentSpeedX = " + currentSpeedX);
-
         // Inverte direção ao bater nas bordas
         if (isMoveDirectionLeft && transform.position.x <= -enemySO.positionX) {
             isMoveDirectionLeft = false;

@@ -33,7 +33,6 @@ public class EnemySpawnManager : MonoBehaviour {
         int listPosition = Random.Range(0, enemySOList.Count);
 
         EnemySO enemySO = enemySOList[listPosition];
-
         if (enemySO.platformPrefab != null) {
             Instantiate(enemySO.platformPrefab);
         }

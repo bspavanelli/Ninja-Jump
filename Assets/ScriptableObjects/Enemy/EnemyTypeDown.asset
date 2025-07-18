@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fa4b7020e252c34f811f242b294f6bc, type: 3}
-  m_Name: EnemyTypeStaticShooterSO
+  m_Name: EnemyTypeDown
   m_EditorClassIdentifier: 
   objectName: Enemy_Base
-  prefab: {fileID: 6258783852882129958, guid: 5331dbc8fbf9aeb40838108c5332ed26, type: 3}
+  prefab: {fileID: 6258783852882129958, guid: b091d002ca6047545be9fa04490995b3, type: 3}
   platformPrefab: {fileID: 0}
   positionX: 1.74
-  type: 2
-  minSpeed: 0
-  maxSpeed: 0
+  type: 0
+  minSpeed: 1
+  maxSpeed: 2

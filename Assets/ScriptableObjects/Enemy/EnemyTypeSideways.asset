@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fa4b7020e252c34f811f242b294f6bc, type: 3}
-  m_Name: EnemyTypeDownSO
+  m_Name: EnemyTypeSideways
   m_EditorClassIdentifier: 
   objectName: Enemy_Base
-  prefab: {fileID: 6258783852882129958, guid: b091d002ca6047545be9fa04490995b3, type: 3}
-  platformPrefab: {fileID: 0}
+  prefab: {fileID: 6258783852882129958, guid: de190f85097ed0f43bb59f11074d9757, type: 3}
+  platformPrefab: {fileID: 7212381872231028165, guid: 21ea12c36229c824584bf39fd38053d2, type: 3}
   positionX: 1.74
-  type: 0
-  minSpeed: 1
-  maxSpeed: 2
+  type: 1
+  minSpeed: 1.5
+  maxSpeed: 4

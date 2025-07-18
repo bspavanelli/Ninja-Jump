@@ -31,12 +31,6 @@ public class GameManager : MonoBehaviour {
         Instance = this;
     }
 
-    private void Start() {
-        StartGame();
-
-        StartCoroutine(HandleClimbSpeedIncreaseOverTime());
-    }
-
     IEnumerator HandleClimbSpeedIncreaseOverTime() {
         yield return new WaitForSeconds(speedChangeInterval);
         
@@ -47,10 +41,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void StartGame() {
+    public void StartGame() {
         SetClimbSpeed(startClimbingSpeed);
 
         SetGameState(State.GamePlaying);
+
+        StartCoroutine(HandleClimbSpeedIncreaseOverTime());
     }
 
     public void GameOver() {
