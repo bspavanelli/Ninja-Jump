@@ -26,7 +26,6 @@ public class ShieldSpawnManager : MonoBehaviour {
 
     private void Update() {
         if (canSpawnShield && GameManager.Instance.GetGameState() == GameManager.State.GamePlaying) {
-            Debug.Log($"{currentTimeToSpawnCounter} de {waitToSpawnTimeMax} para novo shield");
             currentTimeToSpawnCounter += Time.deltaTime;
             
             if (currentTimeToSpawnCounter > waitToSpawnTimeMax) {
