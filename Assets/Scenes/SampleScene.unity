@@ -496,8 +496,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 663731452}
-  - {fileID: 631218025}
   - {fileID: 22649010}
+  - {fileID: 631218025}
+  - {fileID: 1610462443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -1595,6 +1596,54 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0052893, y: 20}
   m_EdgeRadius: 0
+--- !u!1 &1610462442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610462443}
+  - component: {fileID: 1610462444}
+  m_Layer: 0
+  m_Name: ShieldSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610462443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610462442}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 502978128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610462444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610462442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a277bce07ca444d9e69be838b4b05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1022172053}
+  shieldBuffPrefab: {fileID: 8237720493666895957, guid: f2e1eaa0b72d79b4fa7330918f0d42f4, type: 3}
+  minSpawnTime: 2
+  maxSpawnTime: 5
 --- !u!1 &1629778202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,9 +2071,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6852308467048443769, guid: e302ef728f3b7414b9cca1ea27261ec8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+    - target: {fileID: 5759114425579842105, guid: e302ef728f3b7414b9cca1ea27261ec8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

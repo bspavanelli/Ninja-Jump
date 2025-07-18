@@ -3,6 +3,12 @@ using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+
+    public const int WALL_LAYER = 6;
+    public const int ENEMY_LAYER = 7;
+    public const int PROJECTILE_LAYER = 8;
+    public const int BUFF_LAYER = 9;
+
     public enum State {
         WaitingToStart,
         GamePlaying,

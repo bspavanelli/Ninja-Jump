@@ -1,10 +1,8 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private const int WALL_LAYER = 6;
-    private const int ENEMY_LAYER = 7;
-    private const int PROJECTILE_LAYER = 8;
 
     public event EventHandler<OnPlayerAttackEventArgs> OnPlayerAttack;
     public class OnPlayerAttackEventArgs : EventArgs {
@@ -12,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private GameObject shield;
 
     private Rigidbody2D rb;
 
@@ -22,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     private bool isOnLeftWall;
     private bool isJumping;
 
-    void Start() {
+    private void Start() {
         InputManager.Instance.OnJumpAction += InputManager_OnJumpAction;
 
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void JumpToOtherWall() {
+    private void JumpToOtherWall() {
         if (!isJumping) {
             isJumping = true;
 
@@ -56,8 +55,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public bool IsJumping() {
+        return isJumping;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer == WALL_LAYER && isJumping) {
+        if (collision.gameObject.layer == GameManager.WALL_LAYER && isJumping) {
             isJumping = false;
 
             float positionX = isOnLeftWall ? -defaultPositionX : defaultPositionX;
@@ -67,15 +70,31 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.layer == ENEMY_LAYER || collision.gameObject.layer == PROJECTILE_LAYER) {
+        if (collision.gameObject.layer == GameManager.ENEMY_LAYER || collision.gameObject.layer == GameManager.PROJECTILE_LAYER) {
             // Se está pulando, mata o inimigo, se está correndo na parede, toma dano.
             if (isJumping) {
                 OnPlayerAttack?.Invoke(this, new OnPlayerAttackEventArgs {
                     gameObject = collision.gameObject
                 });
             } else {
-                // TODO: Fazer lógica para verificar se está com escudo, caso contrário, game over.
-                GameManager.Instance.GameOver();
+                // Se o shield está ativo, desativa o escudo e ataca o inimigo para destrui-lo
+                if (shield.activeInHierarchy) {
+                    shield.SetActive(false);
+                    OnPlayerAttack?.Invoke(this, new OnPlayerAttackEventArgs {
+                        gameObject = collision.gameObject
+                    });
+
+                    ShieldSpawnManager.Instance.SetCanSpawnShieldTrue();
+                } else {
+                    GameManager.Instance.GameOver();
+                }
+            }
+        }
+
+        if (collision.gameObject.layer == GameManager.BUFF_LAYER) {
+            if (collision.TryGetComponent<ShieldBuffObjectController>(out ShieldBuffObjectController shieldBuff)) {
+                shield.SetActive(true);
+                Destroy(shieldBuff.gameObject);
             }
         }
     }
